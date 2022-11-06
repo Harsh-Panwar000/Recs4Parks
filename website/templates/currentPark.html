@@ -10,6 +10,80 @@
     padding: 0%;
   "
 >
+  {% if totalImage==1%}
+  <div
+    id="carouselExampleDark"
+    class="carousel carousel-dark slide carousel-fade"
+    data-bs-ride="carousel"
+  >
+    <div
+      id="carouselExampleDark"
+      class="carousel carousel-dark slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+      </div>
+      <div
+        class="carousel-inner"
+        style="width: 90%; margin-left: 5%; margin-top: 2vw"
+      >
+        <div class="carousel-item active" style="margin-top: 2vw">
+          <img
+            src="{{data['data'][0]['images'][0]['url']}}"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <p
+        style="
+          font-size: 24px;
+          font-weight: 300;
+          padding: 1em;
+          text-align: center;
+        "
+      >
+        {{data['data'][0]['description']}}
+      </p>
+    </div>
+    <div id="grid">
+      <div id="box1">
+        {% if operatinglengtg != 0 %}
+        <h4>Operating Hours</h4>
+        <p>{{data['data'][0]['operatingHours'][0]['description']}}</p>
+        {%else%}
+        <h4>Operating Hours</h4>
+        <p>Operating Hours not available.</p>
+        {%endif%}
+      </div>
+      <div id="box3">
+        <h4>Activities</h4>
+        {% for activity in activities %}
+        <p>{{activity['name']}}</p>
+        {% endfor %}
+      </div>
+      <div id="box2">
+        {% if weatherlength > 1 %}
+        <h4>Weather Info</h4>
+        <p>{{data['data'][0]['weatherInfo']}}</p>
+        {%else%}
+        <h4>Weather</h4>
+        <p>Weather info not available</p>
+        {%endif%}
+      </div>
+    </div>
+  </div>
+  {% else %}
   <div
     id="carouselExampleDark"
     class="carousel carousel-dark slide carousel-fade"
@@ -119,23 +193,23 @@
         <p>Operating Hours not available.</p>
         {%endif%}
       </div>
+      <div id="box3">
+        <h4>Activities</h4>
+        {% for activity in activities %}
+        <p>{{activity['name']}}</p>
+        {% endfor %}
+      </div>
       <div id="box2">
         {% if weatherlength > 1 %}
         <h4>Weather Info</h4>
         <p>{{data['data'][0]['weatherInfo']}}</p>
-
         {%else%}
         <h4>Weather</h4>
         <p>Weather info not available</p>
         {%endif%}
       </div>
-      <div id="box3">
-        <h4>Activities</h4>
-        {% for activity in activities %}
-        <p>{{activity['name']}}</p>
-        {% endfor %} 
-      </div>
     </div>
-    {%endblock%}
   </div>
+  {% endif %}
 </div>
+{%endblock%}
