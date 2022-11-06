@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block title %}Welcome{% endblock %} {% block
+content%}
+
+<body style="background-color: #ffffff">
+  <div id="login-container">
+    <div
+      style="
+        background-image: url(../static/images/ryan-mayer-ofZcnpMukhY-unsplash.jpg);
+        width: 50%;
+        border-top-left-radius: 0.5vw;
+        border-bottom-left-radius: 0.5vw;
+      "
+    ></div>
+    <div style="width: 50%; background-color: white; border-radius: 0.5vw">
+      <div id="welcome">Enter a State Code</div>
+      <form
+        method="POST"
+        style="
+          width: 90%;
+          margin-left: 5%;
+          margin-top: 5%;
+          border-top-right-radius: 0.5vw;
+          border-bottom-right-radius: 0.5vw;
+        "
+      >
+        <div
+          class="form-group"
+          style="font-family: 'Times New Roman', Times, serif; font-size: 2vh"
+        >
+          <input
+            type="state"
+            class="form-control"
+            id="state"
+            name="state"
+            placeholder="NY, NJ, AZ, etc."
+          />
+        </div>
+        <button
+          type="submit"
+          name="submit"
+          class="btn btn-outline-dark"
+          style="
+            align-content: center;
+            margin-bottom: 2vh;
+            justify-content: center;
+            margin-left: 200px;
+          "
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+
+{% endblock %}
