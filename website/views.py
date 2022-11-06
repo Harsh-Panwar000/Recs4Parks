@@ -4,7 +4,7 @@ import json, random, requests
 views = Blueprint('views', __name__)
 
 @views.route('/', methods = ['GET','POST'])
-def bank():
+def welcome():
     if request.method == 'POST':
         s = request.form.get('state')
         if(len(s) <= 0):
@@ -17,8 +17,7 @@ def bank():
 def park(state):
     if(len(state) <= 0):
         flash("Invalid State",category='error')
-        return redirect(url_for('views.bank'))
-
+        return redirect(url_for('views.welcome'))
     api_url = "https://developer.nps.gov/api/v1/parks?stateCode="+state.upper()+"&api_key=uYogFAGOYuOtyghqxcH7VfJi8dam7OLUieLOJTkI"
     response = requests.get(api_url)
     data = response.json()
@@ -29,7 +28,7 @@ def park(state):
         return render_template("park.html", s = state, data = data, total = int(data['total']))
     else:
         flash("Invalid State",category='error')
-        return redirect(url_for('views.bank'))
+        return redirect(url_for('views.welcome'))
         
 @views.route('/parkCode/<code>', methods = ['GET', 'POST'])
 def currentPark(code):

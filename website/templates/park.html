@@ -1,7 +1,7 @@
-{% extends "base.html" %} {% block title %}Personal Information{% endblock %} {%
-block content %}
-<div class="balanceContainer"
-  >{% for i in range(0,total)%}
+{% extends "base.html" %} {% block title %}{{s}}{% endblock %} {% block content
+%}
+<div class="balanceContainer">
+  {% for i in range(0,total)%}
   <div class="balanceBox" style="font-size: 3vh">
     <div
       style="
@@ -12,44 +12,53 @@ block content %}
       "
     ></div>
 
-    <div style="display: flex;">
+    <div style="display: flex">
       <div style="width: 100%">
-        <div style="margin-left: 2.5%; padding-bottom: 5px; padding-top: 20px; text-align:center">{{data['data'][i]['fullName']}}</div>
-        <img
-        src="{{data['data'][i]['images'][0]['url']}}"
-        style="
-          border-radius: 10px;
-          width: auto;
-          max-width: 70%;
-          margin-left: 15%;
-          margin-top: 10%;
-         "
-      /><img />
-       <p style="font-size:18px; font-weight: 300; padding: 1em; text-align: center"> {{data['data'][i]['description']}}</p>
-         <div class="stocklogo" style="width: 20%">  </div>
-   
-         </div>
-    </div>
-    <form>
-      <input
-        type="hidden"
-        class="form-control"
-        id="id"
-        value="{{data['data'][i]['parkCode']}}"
-        name="id"
-      />
-      <button
-        style="margin-left: 45%;"
-        type="submit"
-        data-toggle="collapse"
-        class="btn btn-outline-dark editChecking"
-      >
-        <a
-          href="{{url_for('views.currentPark', code = data['data'][i]['parkCode'])}}"
-          >More Info</a
+        <div
+          style="
+            margin-left: 2.5%;
+            padding-bottom: 5px;
+            padding-top: 20px;
+            text-align: center;
+          "
         >
-      </button>
-    </form>
+          {{data['data'][i]['fullName']}}
+        </div>
+        <img
+          src="{{data['data'][i]['images'][0]['url']}}"
+          style="
+            border-radius: 10px;
+            width: auto;
+            max-width: 70%;
+            margin-left: 15%;
+            margin-top: 10%;
+          "
+        /><img />
+        <p
+          style="
+            font-size: 18px;
+            font-weight: 300;
+            padding: 1em;
+            text-align: center;
+          "
+        >
+          {{data['data'][i]['description']}}
+        </p>
+        <div class="stocklogo" style="width: 20%"></div>
+      </div>
+    </div>
+
+    <button
+      style="margin-left: 45%"
+      type="submit"
+      data-toggle="collapse"
+      class="btn btn-outline-dark editChecking"
+    >
+      <a
+        href="{{url_for('views.currentPark', code = data['data'][i]['parkCode'])}}"
+        >More Info</a
+      >
+    </button>
   </div>
   {% endfor %}
 </div>
